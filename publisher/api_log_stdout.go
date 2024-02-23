@@ -1,5 +1,11 @@
 package publisher
 
+// ./bin/subscribe -subscriber-uri redis://api_log -publisher-uri apilogstdout://
+// 2024/02/23 02:29:01 INFO Listening for messages
+// {"created":1708655348,"method":"GET","hostname":"ip-10-26-152-44.us-west-2.compute.internal","pid":409857,"remote_addr":"64.252.73.88","access_token_hash":"269a2b4df5bd415c66bc3f2ed92df9f7dd0e147d","auth_token_id":1367947,"api_key_id":1367945,"stat":"ok"}
+//
+// and so on...
+
 import (
 	"context"
 	"encoding/json"
@@ -16,7 +22,7 @@ type ApiLogStdoutPublisher struct {
 
 func init(){
 	ctx := context.Background()
-	ps_publisher.RegisterPublisher(ctx, "apilog_stdout", NewApiLogStdoutPublisher)
+	ps_publisher.RegisterPublisher(ctx, "apilogstdout", NewApiLogStdoutPublisher)
 }
 
 func NewApiLogStdoutPublisher(ctx context.Context, uri string) (ps_publisher.Publisher, error) {

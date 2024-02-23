@@ -4,7 +4,7 @@ go 1.22.0
 
 replace github.com/hpcloud/tail v1.0.0 => github.com/sfomuseum/tail v1.0.1
 
-require github.com/sfomuseum/go-pubsub v0.0.14
+require github.com/sfomuseum/go-pubsub v0.0.15
 
 require (
 	github.com/aaronland/go-aws-session v0.2.1 // indirect
