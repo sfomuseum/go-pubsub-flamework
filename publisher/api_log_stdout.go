@@ -20,7 +20,7 @@ type ApiLogStdoutPublisher struct {
 	ps_publisher.Publisher
 }
 
-func init(){
+func init() {
 	ctx := context.Background()
 	ps_publisher.RegisterPublisher(ctx, "apilogstdout", NewApiLogStdoutPublisher)
 }

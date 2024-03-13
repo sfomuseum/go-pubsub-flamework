@@ -11,12 +11,14 @@ import (
 	ps_publisher "github.com/sfomuseum/go-pubsub/publisher"
 )
 
+const API_LOGS_TABLE_NAME string = "ApiLogs"
+
 type ApiLogSQLPublisher struct {
 	ps_publisher.Publisher
 	db *sql.DB
 }
 
-func init(){
+func init() {
 	ctx := context.Background()
 	ps_publisher.RegisterPublisher(ctx, "apilog_sql", NewApiLogSQLPublisher)
 }
@@ -55,6 +57,26 @@ func (p *ApiLogSQLPublisher) Publish(ctx context.Context, msg string) error {
 
 	if err != nil {
 		return fmt.Errorf("Failed to parse log, %w", err)
+	}
+
+	enc_params, err := json.Marshal(api_log.Params)
+
+	if err != nil {
+		return fmt.Errorf("Failed to marshal parameters, %w", err)
+	}
+
+	enc_error, err := json.Marshal(api_log.Error)
+
+	if err != nil {
+		return fmt.Errorf("Failed to marshal error, %w", err)
+	}
+
+	q := fmt.Sprintf("INSERT INTO %s (id, api_key_id, api_key_user_id, access_token_id, access_token_user_id, access_token_hash, remote_addr, hostname, method, params, stat, error, created) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", API_LOGS_TABLE_NAME)
+
+	_, err = p.db.ExecContext(ctx, q, api_log.Id, api_log.ApiKeyId, api_log.ApiKeyUserId, api_log.AccessTokenId, api_log.AccessTokenUserId, api_log.AccessTokenHash, api_log.RemoteAddr, api_log.Hostname, api_log.Method, string(enc_params), api_log.Stat, string(enc_error), api_log.Created)
+
+	if err != nil {
+		return fmt.Errorf("Failed to insert API log, %w", err)
 	}
 
 	return nil

@@ -5,8 +5,8 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/sfomuseum/go-pubsub/app/subscribe"
 	_ "github.com/sfomuseum/go-pubsub-flamework/publisher"
+	"github.com/sfomuseum/go-pubsub/app/subscribe"
 )
 
 func main() {
