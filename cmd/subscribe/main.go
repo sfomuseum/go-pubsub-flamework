@@ -5,6 +5,7 @@ import (
 	"log/slog"
 	"os"
 
+	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/sfomuseum/go-pubsub-flamework/publisher"
 	"github.com/sfomuseum/go-pubsub/app/subscribe"
 )

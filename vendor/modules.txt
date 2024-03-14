@@ -1,3 +1,7 @@
+# filippo.io/edwards25519 v1.1.0
+## explicit; go 1.20
+filippo.io/edwards25519
+filippo.io/edwards25519/field
 # github.com/aaronland/go-aws-session v0.2.1
 ## explicit; go 1.18
 github.com/aaronland/go-aws-session
@@ -175,6 +179,9 @@ github.com/go-redis/redis/v8/internal/pool
 github.com/go-redis/redis/v8/internal/proto
 github.com/go-redis/redis/v8/internal/rand
 github.com/go-redis/redis/v8/internal/util
+# github.com/go-sql-driver/mysql v1.8.0
+## explicit; go 1.18
+github.com/go-sql-driver/mysql
 # github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da
 ## explicit
 github.com/golang/groupcache/lru

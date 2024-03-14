@@ -4,9 +4,13 @@ go 1.22.0
 
 replace github.com/hpcloud/tail v1.0.0 => github.com/sfomuseum/tail v1.0.1
 
-require github.com/sfomuseum/go-pubsub v0.0.15
+require (
+	github.com/go-sql-driver/mysql v1.8.0
+	github.com/sfomuseum/go-pubsub v0.0.15
+)
 
 require (
+	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/aaronland/go-aws-session v0.2.1 // indirect
 	github.com/aaronland/go-roster v1.0.0 // indirect
 	github.com/aaronland/go-string v1.0.0 // indirect
