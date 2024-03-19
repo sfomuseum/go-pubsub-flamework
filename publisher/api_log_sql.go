@@ -79,9 +79,9 @@ func (p *ApiLogSQLPublisher) Publish(ctx context.Context, msg string) error {
 		return fmt.Errorf("Failed to marshal error, %w", err)
 	}
 
-	q := fmt.Sprintf("INSERT INTO %s (id, api_key_id, api_key_user_id, access_token_id, access_token_user_id, access_token_hash, remote_addr, hostname, method, params, stat, error, created) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", API_LOGS_TABLE_NAME)
+	q := fmt.Sprintf("INSERT INTO %s (id, api_key_id, api_key_user_id, api_key_role_id, access_token_id, access_token_user_id, access_token_hash, remote_addr, hostname, method, params, stat, error, created) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", API_LOGS_TABLE_NAME)
 
-	_, err = p.db.ExecContext(ctx, q, api_log.Id, api_log.ApiKeyId, api_log.ApiKeyUserId, api_log.AccessTokenId, api_log.AccessTokenUserId, api_log.AccessTokenHash, api_log.RemoteAddr, api_log.Hostname, api_log.Method, string(enc_params), api_log.Stat, string(enc_error), api_log.Created)
+	_, err = p.db.ExecContext(ctx, q, api_log.Id, api_log.ApiKeyId, api_log.ApiKeyUserId, api_log.ApiKeyRoleId, api_log.AccessTokenId, api_log.AccessTokenUserId, api_log.AccessTokenHash, api_log.RemoteAddr, api_log.Hostname, api_log.Method, string(enc_params), api_log.Stat, string(enc_error), api_log.Created)
 
 	if err != nil {
 		logger.Error("Failed to record log message", "error", err)

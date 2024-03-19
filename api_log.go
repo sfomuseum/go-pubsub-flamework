@@ -10,6 +10,7 @@ type ApiLog struct {
 	Id                int64                  `json:"id"`
 	ApiKeyId          int64                  `json:"api_key_id"`
 	ApiKeyUserId      int64                  `json:"api_key_user_id"`
+	ApiKeyRoleId      uint8                  `json:"api_key_role_id"`
 	AccessTokenId     int64                  `json:"access_token_id"`
 	AccessTokenUserId int64                  `json:"access_token_user_id"`
 	AccessTokenHash   string                 `json:"access_token_hash"`
