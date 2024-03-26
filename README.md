@@ -1,5 +1,7 @@
 # go-pubsub-flamework
 
+Go package implementing the `sfomuseum/go-pubsub.Publisher` interface for Flamework log events.
+
 ## Documentation
 
 Documentation is incomplete
